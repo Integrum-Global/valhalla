@@ -43,7 +43,7 @@ public:
     // Cache results
     label_idx_.clear();
     uint16_t dest = 1; // dest at 0 is reserved for the origin
-    [[maybe_unused]] uint16_t found = 0;
+    uint16_t found = 0;
     for (const auto& stateid : stateids) {
       const auto it = results.find(dest);
       if (it != results.end()) {
@@ -53,7 +53,10 @@ public:
       ++dest;
     }
     labelset_ = labelset;
+
     LOG_TRACE("Found " + std::to_string(found) + " destinations out of " + std::to_string(dest - 1));
+    volatile int force_use = found;  // Force a use of the 'found' variable
+    (void)force_use;  // Suppress any unused variable warning for 'force_use'
   }
 
   const Label* last_label(const State& state) const {

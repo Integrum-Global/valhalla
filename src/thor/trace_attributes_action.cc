@@ -106,6 +106,12 @@ std::string thor_worker_t::trace_attributes(Api& request) {
         }
       }
       break;
+
+    default:
+        // Handle unexpected values or simply do nothing.
+        // Sentinel values 'ShapeMatch_INT_MIN_SENTINEL_DO_NOT_USE_' and
+        // 'ShapeMatch_INT_MAX_SENTINEL_DO_NOT_USE_' are not expected to be used.
+        break;
   }
 
   return tyr::serializeTraceAttributes(request, controller, map_match_results);

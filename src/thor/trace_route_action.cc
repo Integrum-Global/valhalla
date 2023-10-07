@@ -124,6 +124,11 @@ void thor_worker_t::trace_route(Api& request) {
       }
       // clang-format on
       break;
+    default:
+        // Handle unexpected values or simply do nothing.
+        // Sentinel values 'ShapeMatch_INT_MIN_SENTINEL_DO_NOT_USE_' and
+        // 'ShapeMatch_INT_MAX_SENTINEL_DO_NOT_USE_' are not expected to be used.
+        break;
   }
 }
 
